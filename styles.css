@@ -1,0 +1,129 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background-color: darkcyan;
+}
+
+.glass {
+  position: relative;
+  width: 140px;
+  height: 220px;
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.base {
+  position: absolute;
+  bottom: -65px;
+  left: 50%;
+  width: 80px;
+  height: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.base::before,
+.base::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 15px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  filter: blur(5px);
+  transform: translateY(-50%);
+  background-color: white;
+}
+
+.base::before {
+  left: -10px ;
+}
+
+.base::after {
+  right: -10px;
+}
+
+.stem {
+  position: absolute;
+  bottom: -63px;
+  left: 50%;
+  width: 12px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(-50%);
+  border-radius: 3px;
+  background-color: white;
+}
+
+.fluid {
+  position: absolute;
+  bottom: 15px;
+  width: 85%;
+  height: 50%;
+  background-color: #1ecfcf;
+  /* background: linear-gradient(45deg, #ff00ff, #00ffff, #ffcc00, #ff00ff); */
+  border-radius: 0 0 50% 50% / 10% 10% 50% 50%;
+  /* animation: resizeFluid 3s infinite linear alternate, colorShift 6s infinite linear; */
+  transform-origin: bottom center;
+}
+
+@keyframes resizeFluid {
+  0% { transform: scaleY(1); }
+  50% { transform: scaleY(1.2) translateY(-5px); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes colorShift {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.straw {
+  position: absolute;
+  top: 25%;
+  right: 25px;
+  width: 12px;
+  height: 90px;
+  background: linear-gradient(90deg, #ff00ff, #ffcc00);
+  border-radius: 5px;
+  transform: rotate(10deg);
+}
+
+.glitter {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  box-shadow: 0 0 5px white;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.3); }
+}
+
+.stars {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background: rgb(219, 255, 12);
+  border-radius: 50%;
+  box-shadow: 0 0 8px white;
+  animation: float 4s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
