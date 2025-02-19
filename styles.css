@@ -4,13 +4,13 @@ body {
   align-items: center;
   height: 100vh;
   overflow: hidden;
-  background-color: darkcyan;
+  background-color: #04046d;
 }
 
 .glass {
   position: relative;
-  width: 140px;
-  height: 220px;
+  width: 225px;
+  height: 180px;
   backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
@@ -21,7 +21,7 @@ body {
   position: absolute;
   bottom: -65px;
   left: 50%;
-  width: 80px;
+  width: 140px;
   height: 3px;
   background-color: white;
   border-radius: 50%;
@@ -60,22 +60,136 @@ body {
   border-radius: 3px;
   background-color: white;
 }
+.fluid-container {
+  position: relative;
+  width: 280px;
+  height: 100px;
+}
 
+/* Main fluid */
 .fluid {
+  right: 15px;
+  position: absolute;
+  bottom: 130px;
+  width: 200px;
+  height: 50px;
+  background: linear-gradient(45deg, #30eccd, #0ae69c, #0ce43b, #0ae0e7);
+  border-radius: 18% 18% 90% 90% / 90% 90% 50% 50%;
+  animation: resizeFluid 3s infinite linear alternate, colorShift 6s infinite linear;
+  transform-origin: bottom center;
+  box-shadow: 0px 0px 30px rgba(26, 242, 175, 0.9), 0px 0px 60px rgba(26, 242, 175, 0.6);
+}
+
+.fluid-bottom {
+  position: absolute;
+  right: 75px;
+  bottom: 30px;
+  width: 80px;
+  height: 20px;
+  background: linear-gradient(45deg, #30eccd, #0ae69c, #0ce43b, #0ae0e7);
+  border-radius: 0% 0% 20% 20% / 10% 10% 90% 90%;
+  transform-origin: bottom center;
+  box-shadow: 
+    0px 0px 30px rgba(26, 242, 175, 0.9), /* Intense main glow */
+    0px 0px 60px rgba(26, 242, 175, 0.6); /* Outer spread */
+    animation: colorShift 6s infinite linear;
+}
+
+.fluid-main{
+  position: absolute;
+  --mask: radial-gradient(50px at 50px 50px, #0000 98%, black) -50px -50px;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  height: 50px;
+  width: 180px;
+  right: 25px;
+  bottom: 50px;
+  background: linear-gradient(45deg, #30eccd, #0ae69c, #0ce43b, #0ae0e7);
+  border-radius: 0% 0% 20% 20% / 10% 10% 90% 90%;
+  transform-origin: bottom center;
+  box-shadow: 
+    0px 0px 30px rgba(26, 242, 175, 0.9), /* Intense main glow */
+    0px 0px 60px rgba(26, 242, 175, 0.6); /* Outer spread */
+    animation: colorShift 6s infinite linear;
+}
+
+.fluid-top{
+  position: absolute;
+  height: 50px;
+  width: 200px;
+  right: 15px;
+  bottom: 99px;
+  background: linear-gradient(45deg, #30eccd, #0ae69c, #0ce43b, #0ae0e7);
+  border-radius: 0% 0% 10% 10% / 70% 70% 90% 90%;
+  transform-origin: bottom center;
+  box-shadow: 0px 0px 30px rgba(26, 242, 175, 0.9), 0px 0px 60px rgba(26, 242, 175, 0.6);
+  animation: colorShift 6s infinite linear;
+}
+
+/* Stronger glow effect */
+.fluid-glow {
   position: absolute;
   bottom: 15px;
-  width: 85%;
-  height: 50%;
-  background-color: #1ecfcf;
-  /* background: linear-gradient(45deg, #ff00ff, #00ffff, #ffcc00, #ff00ff); */
+  width: 200px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(26, 242, 175, 0.9) 30%, rgba(0, 0, 0, 0) 10%);
   border-radius: 0 0 50% 50% / 10% 10% 50% 50%;
-  /* animation: resizeFluid 3s infinite linear alternate, colorShift 6s infinite linear; */
-  transform-origin: bottom center;
+  filter: blur(30px); /* More intense blur */
+  opacity: 1;
+  animation: glowPulse 2s infinite alternate ease-in-out;
+}
+
+/* Extra glow using pseudo-element */
+.fluid::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  left: -10%;
+  top: -10%;
+  background: radial-gradient(circle, rgba(26, 242, 175, 0.7) 25%, rgba(0, 0, 0, 0) 80%);
+  filter: blur(40px);
+  opacity: 0.7;
+  border-radius: inherit;
+  animation: glowFlicker 1.5s infinite alternate ease-in-out;
+}
+
+/* Glowing animation */
+@keyframes glowPulse {
+  0% {
+    opacity: 1;
+    filter: blur(30px);
+  }
+  100% {
+    opacity: 0.6;
+    filter: blur(50px);
+  }
+}
+
+/* Slight flicker effect for more realism */
+@keyframes glowFlicker {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fluid-edge {
+  position: relative;
+  height: 25%;
+  left: 6%;
+  width: 88%;
+  bottom: 7%;
+  background-color: #1ecfcf;
+  background: linear-gradient(45deg, #16fd8a, #3bf5b7, #55ecd3, #29ffe2);
+  border-radius: 50% 50% 30% 30% / 50% 50% 50% 50%;
 }
 
 @keyframes resizeFluid {
   0% { transform: scaleY(1); }
-  50% { transform: scaleY(1.2) translateY(-5px); }
+  50% { transform: scaleY(1.05) translateY(-5px); }
   100% { transform: scaleY(1); }
 }
 
@@ -84,16 +198,50 @@ body {
   100% { filter: hue-rotate(360deg); }
 }
 
-.straw {
+.straw-container {
   position: absolute;
-  top: 25%;
-  right: 25px;
-  width: 12px;
-  height: 90px;
-  background: linear-gradient(90deg, #ff00ff, #ffcc00);
+  top: -15%;
+  right: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: floatUpDown  3s infinite linear alternate; /* Add floating effect */
+}
+
+/* Base part (inside the drink) */
+.straw-base {
+  width: 10px;
+  height: 120px;
+  background: linear-gradient(90deg, #222, #000);
   border-radius: 5px;
   transform: rotate(10deg);
 }
+
+
+/* Flexible bend section */
+.straw-bend {
+  width: 10px;
+  height: 20px;
+  background: linear-gradient(90deg, #222, #000);
+  border-radius: 5px;
+  transform: rotate(30deg);
+  position: relative;
+  top: -133px;
+  right: -14px;
+}
+
+/* Top part (goes to the right) */
+.straw-top {
+  width: 35px;
+  height: 10px;
+  background: linear-gradient(90deg, #222, #000);
+  border-radius: 5px;
+  position: relative;
+  top: -149px;
+  left: 32px;
+  transform: rotate(13deg);
+}
+
 
 .glitter {
   position: absolute;
@@ -120,10 +268,130 @@ body {
   background: rgb(219, 255, 12);
   border-radius: 50%;
   box-shadow: 0 0 8px white;
-  animation: float 4s infinite ease-in-out;
+  animation: float 4s infinite ease-in-out,  glowStarPulse 2s infinite alternate ease-in-out;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
+
+/* Glowing animation */
+@keyframes glowStarPulse {
+  0% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(50px);
+  }
+}
+
+@keyframes floatUpDown {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.ice-cube {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 3px;
+  box-shadow: 
+    inset 0 0 8px rgba(255, 255, 255, 0.6),
+    0 0 4px rgba(255, 255, 255, 0.3);
+  transform: rotate(15deg);
+  z-index: 1;
+  animation: floatUpDown  3s infinite linear alternate,  float-ice 3s infinite ease-in-out;
+}
+
+@keyframes float-ice {
+  0%, 100% { transform: rotate(55deg) translateY(5px); }
+  50% { transform: rotate(15deg) translateY(10px); }
+}
+
+
+/* New outer layer for wider top */
+.glass-layer {
+  position: absolute;
+  top: -10px;
+  left: -5px;
+  width: 230px;
+  height: 170px;
+  z-index: -1;
+
+}
+
+.glass-layer-bottom{
+  position: absolute;
+  right: 65px;
+  bottom: 13px;
+  width: 100px;
+  height: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-left-style: none;
+  border-radius: 0% 0% 30% 30% / 10% 10% 90% 90%;
+}
+
+.glass-layer-base-left{
+  position: absolute;
+  top: 85px;
+  left: 155px;
+  width: 156px;
+  height: 71px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: solid;
+  border-radius: 25% 25% 0% 0% / 90% 90% 10% 10%;
+}
+
+.glass-layer-base-right{
+  position: absolute;
+  top: 85px;
+  right: 161px;
+  width: 208px;
+  height: 71px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-style: none;
+  border-right-style: solid;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-radius: 25% 25% 0% 0% / 90% 90% 10% 10%;
+}
+
+.glass-layer-base-main{
+  position: absolute;
+  top: 32px;
+  left: 0px;
+  width: 215px;
+  height: 55px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-style: none;
+  border-right-style: solid;
+  border-bottom-style: none;
+  border-left-style: solid;
+  border-radius: 0% 0% 10% 10% / 10% 10% 90% 90%
+}
+
+
