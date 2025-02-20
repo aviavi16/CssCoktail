@@ -118,7 +118,7 @@ body {
   height: 50px;
   width: 200px;
   right: 15px;
-  bottom: 100px;
+  bottom: 99px;
   background: linear-gradient(45deg, #30eccd, #0ae69c, #0ce43b, #0ae0e7);
   border-radius: 0% 0% 10% 10% / 70% 70% 90% 90%;
   transform-origin: bottom center;
@@ -217,17 +217,35 @@ body {
   background: linear-gradient(90deg, #222, #000);
   border-radius: 5px;
   transform: rotate(10deg);
+  border-radius: 50% 50% 50% 50% / 6% 10% 0% 0;
+}
+
+.straw-blend-dry {
+  z-index: 2;
+  position: absolute;
+  height: 8px;
+  left: -333%;
+  width: 180px;
+  bottom: 72%;
+  /* background: linear-gradient(90deg, #222, #000); */
+  border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  border: 3px solid white;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-left-style: none;
 }
 
 /* (inside the drink)  */
 .straw-base-liquid {
   position: relative;
-  right: 3px;
+  right: 1px;
   width: 10px;
   height: 80px;
   background: linear-gradient(90deg, #22222200, #0000006b);
   border-radius: 5px;
   transform: rotate(10deg);
+  border-radius: 50% 50% 50% 50% / 0% 0% 10% 10%;
 }
 
 
