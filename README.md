@@ -1,4 +1,9 @@
 # CSS Cocktail Glass 🍸
+https://aviavi16.github.io/CssCoktail/
+
+## Screenshots & GIFs
+<img src="https://paste.pics/SVTJI" align="center" height="350" width="600"/>
+<img src="https://paste.pics/SVTJQ" align="center" height="350" width="600"/>
 
 ## About the Project
 I created a stunning cocktail glass using **pure CSS** to participate in a coding contest. The challenge was to design a glowing cocktail using only HTML & CSS—no images or SVGs allowed! ✨
@@ -9,9 +14,6 @@ I created a stunning cocktail glass using **pure CSS** to participate in a codin
 - **Smooth animations** for realism
 - **Creative garnishes** for extra flair
 
-## Screenshots & GIFs
-https://paste.pics/SVTJI
-https://paste.pics/SVTJQ
 
 ## Technologies Used
 - HTML5
